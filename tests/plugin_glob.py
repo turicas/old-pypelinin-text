@@ -3,19 +3,22 @@
 import unittest
 import tempfile
 import shutil
-import textflow
+import sys
+
+sys.path.insert(0, '..')
+import pypelinin
 
 
-class TestSimplePipeline(unittest.TestCase):
+class TestGlobPlugin(unittest.TestCase):
     def test_invalid_plugin_should_raise_InvalidPluginException(self):
-        with self.assertRaises(textflow.InvalidPluginException):
-            textflow.process(['this_plugin_does_not_exist'])
+        with self.assertRaises(pypelinin.InvalidPluginException):
+            pypelinin.process(['this_plugin_does_not_exist'])
 
 
     def test_plugin_glob_with_one_parameter(self):
         tmp_dir = tempfile.mkdtemp()
         plugins = ['glob']
-        expected_result = textflow.process(plugins, [tmp_dir])
+        expected_result = pypelinin.process(plugins, [tmp_dir])
         try:
             self.assertEquals(expected_result, [tmp_dir])
         finally:
@@ -26,7 +29,7 @@ class TestSimplePipeline(unittest.TestCase):
         tmp_dir_1 = tempfile.mkdtemp()
         tmp_dir_2 = tempfile.mkdtemp()
         plugins = ['glob']
-        expected_result = textflow.process(plugins, [tmp_dir_1, tmp_dir_2])
+        expected_result = pypelinin.process(plugins, [tmp_dir_1, tmp_dir_2])
         try:
             self.assertEquals(len(expected_result), 2)
             self.assertItemsEqual(expected_result, [tmp_dir_1, tmp_dir_2])
@@ -38,7 +41,7 @@ class TestSimplePipeline(unittest.TestCase):
     def test_plugin_glob_with_two_equal_parameters(self):
         tmp_dir = tempfile.mkdtemp()
         plugins = ['glob']
-        expected_result = textflow.process(plugins, [tmp_dir, tmp_dir])
+        expected_result = pypelinin.process(plugins, [tmp_dir, tmp_dir])
         try:
             self.assertEquals(len(expected_result), 1)
             self.assertEquals(expected_result, [tmp_dir])
