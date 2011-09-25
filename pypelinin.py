@@ -1,4 +1,6 @@
 import glob
+import markdown
+
 
 def process(plugins, parameters=[]):
     result = []
@@ -6,6 +8,12 @@ def process(plugins, parameters=[]):
         for parameter in parameters:
             result.extend(glob.glob(parameter))
         return list(set(result))
+    elif plugins[0] == 'markdown':
+        for parameter in parameters:
+            filename = parameter + '.html'
+            markdown.markdownFromFile(parameter, filename)
+            result.append(filename)
+        return result
     raise InvalidPluginException
 
 
