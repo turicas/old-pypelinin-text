@@ -5,5 +5,10 @@ def process(plugins, parameters=[]):
     if plugins[0] == 'glob':
         for parameter in parameters:
             result.extend(glob.glob(parameter))
-    return list(set(result))
+        return list(set(result))
+    raise InvalidPluginException
+
+
+class InvalidPluginException(BaseException):
+    pass
 
