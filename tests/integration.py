@@ -11,6 +11,21 @@ import pypelinin
 
 
 class TestIntegration(unittest.TestCase):
+    def test_when_plugin_list_is_empty_ValueError_should_be_raised(self):
+        with self.assertRaises(ValueError):
+            result = pypelinin.process([], ['some string'])
+
+
+    def test_when_input_is_not_list_should_raise_TypeError(self):
+        with self.assertRaises(TypeError):
+            result = pypelinin.process(['glob'], 'some string')
+
+
+    def test_when_output_is_not_list_should_raise_TypeError(self):
+        result = pypelinin.process(['glob'], ['some string'])
+        self.assertEquals(type(result), type([]))
+
+
     def test_simple_pipe_with_2_plugins(self):
         tmp_fd = tempfile.NamedTemporaryFile(delete=False)
         random_chars = [chr(int(97 + random.random() * 26)) for x in range(20)]
@@ -32,7 +47,6 @@ class TestIntegration(unittest.TestCase):
         out_fd.close()
         os.remove(result_filenames[0])
         os.remove(tmp_fd.name)
-
 
 
 unittest.main()
