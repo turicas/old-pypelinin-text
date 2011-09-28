@@ -1,37 +1,21 @@
 import glob
 import markdown
+import plugins
 
 
-def plugin_glob(parameters=[]):
-    result = []
-    for parameter in parameters:
-        result.extend(glob.glob(parameter))
-    result = list(set(result))
-    return result
+def process(input_plugins, parameters=[]):
+    if type(parameters) != type([]):
+        raise TypeError('Input parameters should be a list.')
+    elif not input_plugins:
+        raise ValueError('No plugins received')
 
-
-def plugin_markdown(parameters=[]):
-    result = []
-    for parameter in parameters:
-        filename = parameter + '.html'
-        markdown.markdownFromFile(parameter, filename)
-        result.append(filename)
-    return result
-
-
-plugin_list = {'glob': plugin_glob,
-               'markdown': plugin_markdown,}
-
-
-def process(plugins, parameters=[]):
     result = parameters
-    for plugin in plugins:
-        if plugin not in plugin_list:
+    for plugin in input_plugins:
+        if plugin not in plugins.plugin_list:
             raise InvalidPluginException
-        result = plugin_list[plugin](result)
+        result = plugins.plugin_list[plugin](result)
     return result
 
 
 class InvalidPluginException(BaseException):
     pass
-
