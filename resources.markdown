@@ -1,0 +1,12 @@
+- <http://ringce.com/hyde> <http://stevelosh.com/>
+- <http://zine.pocoo.org/>
+- <http://pypi.python.org/pypi/CleverCSS>
+- <http://code.google.com/p/papy/>
+- <http://packages.python.org/joblib/>
+- ipython ipipe
+- <http://docs.python.org/library/pipes.html>
+- <http://dev-tricks.net/pipe-infix-syntax-for-python>
+- <http://blog.ouseful.info/2010/09/30/yahoo-pipes-code-generator/>
+- <http://dev-tricks.net/python-introducing-ppipe-parallel-pipe>
+- <http://www.codeproject.com/KB/cpp/generic_pipeline_cpp.aspx>
+- <http://www.google.com.br/search?sourceid=chrome&client=ubuntu&channel=cs&ie=UTF-8&q=python+pipe#sclient=psy-ab&hl=pt-BR&client=ubuntu&channel=cs&source=hp&q=framework+pipeline&pbx=1&oq=framework+pipeline&aq=f&aqi=g-vL2&aql=1&gs_sm=e&gs_upl=1056925l1063080l0l1063821l20l19l1l6l6l2l361l3062l0.3.7.2l19l0&bav=on.2,or.r_gc.r_pw.&fp=79eb6a4510b375f6&biw=1366&bih=629>
