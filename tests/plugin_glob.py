@@ -47,6 +47,6 @@ class TestGlobPlugin(unittest.TestCase):
             self.assertEquals(expected_result, [tmp_dir])
         finally:
             shutil.rmtree(tmp_dir)
-
+#TODO test using * on filenames -> return only one and return a lot of files
 
 unittest.main()
