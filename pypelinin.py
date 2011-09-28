@@ -6,7 +6,8 @@ def plugin_glob(parameters=[]):
     result = []
     for parameter in parameters:
         result.extend(glob.glob(parameter))
-    return list(set(result))
+    result = list(set(result))
+    return result
 
 
 def plugin_markdown(parameters=[]):
