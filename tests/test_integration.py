@@ -2,11 +2,8 @@
 
 import unittest
 import tempfile
-import sys
 import os
 import random
-
-sys.path.insert(0, '..')
 import pypelinin
 
 
@@ -33,7 +30,7 @@ class TestIntegration(unittest.TestCase):
         tmp_fd.write('%s\n%s' %  (random_string, '=' * len(random_string)))
         tmp_fd.close()
         tmp_filename = tmp_fd.name
-        
+
         plugins = ['glob', 'markdown']
         result_filenames = pypelinin.process(plugins, [tmp_filename])
         expected_output_filename = tmp_filename + '.html'
@@ -47,6 +44,3 @@ class TestIntegration(unittest.TestCase):
         out_fd.close()
         os.remove(result_filenames[0])
         os.remove(tmp_fd.name)
-
-
-unittest.main()

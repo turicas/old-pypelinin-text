@@ -9,7 +9,6 @@ def plugin_glob(parameters=[]):
     result = list(set(result))
     return result
 
-
 def plugin_markdown(parameters=[]):
     result = []
     for parameter in parameters:

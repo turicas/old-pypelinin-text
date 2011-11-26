@@ -3,9 +3,6 @@
 import unittest
 import tempfile
 import os
-import sys
-
-sys.path.insert(0, '..')
 import pypelinin
 
 
@@ -14,7 +11,7 @@ class TestMarkdownPlugin(unittest.TestCase):
         tmp_fd = tempfile.NamedTemporaryFile(delete=False)
         tmp_fd.write('testing\n=======')
         tmp_fd.close()
-        
+
         plugins = ['markdown']
         result_filenames = pypelinin.process(plugins, [tmp_fd.name])
         expected_output = '<h1>testing</h1>'
@@ -31,11 +28,11 @@ class TestMarkdownPlugin(unittest.TestCase):
         tmp_fd_1 = tempfile.NamedTemporaryFile(delete=False)
         tmp_fd_1.write('testing 1\n=========')
         tmp_fd_1.close()
-        
+
         tmp_fd_2 = tempfile.NamedTemporaryFile(delete=False)
         tmp_fd_2.write('testing 2\n=========')
         tmp_fd_2.close()
-        
+
         plugins = ['markdown']
         expected_filenames = [tmp_fd_1.name, tmp_fd_2.name]
         result_filenames = pypelinin.process(plugins, expected_filenames)
@@ -51,6 +48,3 @@ class TestMarkdownPlugin(unittest.TestCase):
         os.remove(tmp_fd_2.name)
         os.remove(result_filenames[0])
         os.remove(result_filenames[1])
-
-
-unittest.main()

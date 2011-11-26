@@ -3,9 +3,6 @@
 import unittest
 import tempfile
 import shutil
-import sys
-
-sys.path.insert(0, '..')
 import pypelinin
 
 
@@ -48,5 +45,3 @@ class TestGlobPlugin(unittest.TestCase):
         finally:
             shutil.rmtree(tmp_dir)
 #TODO test using * on filenames -> return only one and return a lot of files
-
-unittest.main()
