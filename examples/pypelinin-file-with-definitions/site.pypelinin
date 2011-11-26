@@ -1,0 +1,3 @@
+#!/usr/bin/env pypelinin
+
+*.markdown > glob | markdown
